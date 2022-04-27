@@ -4,8 +4,11 @@ const express = require("express");
 //create an express server from funct above
 const server = express() //this server is deaf af, cant hear anything
 
+// global object called process 
+//console.log(process.env.PORT)
+
 //make it listen (give it ears)
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 server.listen(PORT, ()=> {
 	console.log("server listening");
