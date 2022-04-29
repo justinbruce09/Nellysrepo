@@ -86,21 +86,22 @@ server.get("/students/city/:city", (req, res) => {
   }
 });
 
-server.get("/students/name/:name", (req, res) => {
-  const { name } = req.params;
-  if (name) {
+server.get("/students/name/:names", (req, res) => {
+  const { names } = req.params;
+  if (names) {
     const filteredStudents = Object.values(students).filter(
-      (student) => student.name.toLowerCase() === name.toLowerCase()
+      (student) => student.name.toLowerCase() === names.toLowerCase()
     );
     return res.send(filteredStudents);
   }
 });
 
-server.get("/students/interests/:interests", (req, res) => {
-  const { interests } = req.params;
-  if (interests) {
-    const filteredStudents = Object.values(students).filter(
-      (student) => student[interests].toLowerCase() === interests.toLowerCase()
+server.get("/students/interests/:interest", (req, res) => {
+  const { interest } = req.params;
+  console.log(interest);
+  if (interest) {
+    const filteredStudents = Object.values(students).filter((student) =>
+      student.interests.includes(interest.toLowerCase())
     );
     return res.send(filteredStudents);
   }
