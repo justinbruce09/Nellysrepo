@@ -11,7 +11,7 @@ server.use(express.json());
 
 //allow CORS on requests, can be route specific
 const cors = require("cors");
-server.use(express.cors());
+server.use(cors());
 //make it listen (give it ears)
 const PORT = process.env.PORT || 3000;
 
