@@ -44,32 +44,32 @@ const students = {
 //GET/students
 // ?name=STUDENT_NAME
 //localhost:3000/students?name=will
-// server.get("/students/", (req, res) => {
-//   const { name, interests, city } = req.query;
+server.get("/students/", (req, res) => {
+  const { name, interests, city } = req.query;
 
-//   if (name) {
-//     const student = students[name.toLowerCase()];
-//     if (student) {
-//       return res.send(student);
-//     }
-//     return res
-//       .status(404)
-//       .send({ error: `student by the name of ${name} not found` });
-//   }
+  if (name) {
+    const student = students[name.toLowerCase()];
+    if (student) {
+      return res.send(student);
+    }
+    return res
+      .status(404)
+      .send({ error: `student by the name of ${name} not found` });
+  }
 
-//   let filteredStudents = Object.values(students);
-//   if (interests) {
-//     filteredStudents = filteredStudents.filter((student) => {
-//       return student.interests.includes(interests.toLowerCase());
-//     });
-//   }
-//   if (city) {
-//     filteredStudents = filteredStudents.filter(
-//       (student) => student.city.toLowerCase() === city.toLowerCase()
-//     );
-//   }
-//   return res.send(filteredStudents);
-// });
+  let filteredStudents = Object.values(students);
+  if (interests) {
+    filteredStudents = filteredStudents.filter((student) => {
+      return student.interests.includes(interests.toLowerCase());
+    });
+  }
+  if (city) {
+    filteredStudents = filteredStudents.filter(
+      (student) => student.city.toLowerCase() === city.toLowerCase()
+    );
+  }
+  return res.send(filteredStudents);
+});
 
 //GET/ students/city/:mycity
 //using NAMED ROUTE PARAMETERS
